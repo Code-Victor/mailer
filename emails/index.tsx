@@ -28,7 +28,7 @@ interface EmailProps {
 
 const baseUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
-  : ".";
+  : "";
 
 export default function Email({
   username = "zenorocha",
