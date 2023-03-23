@@ -26,7 +26,7 @@ export const Sidebar = React.forwardRef<SidebarElement, Readonly<SidebarProps>>(
         {...props}
       >
         <div className="h-[70px] flex items-center">
-          <Logo />
+          <h1 className="text-xl font-semibold text-white" >OTC mailer</h1>
         </div>
 
         <nav className="flex flex-col gap-4">

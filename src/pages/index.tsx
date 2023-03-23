@@ -36,7 +36,7 @@ const Home: React.FC<Readonly<HomeProps>> = ({ navItems }: any) => {
     <Layout navItems={navItems}>
       <div className="max-w-md border border-slate-6 mx-auto mt-56 rounded-md p-8">
         <Heading as="h2" weight="medium">
-          Welcome to the React Email preview!
+          Welcome to the OTC mailer preview!
         </Heading>
         <Text as="p" className="mt-2 mb-4">
           To start developing your next email template, you can create a{' '}
