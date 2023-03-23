@@ -27,10 +27,10 @@ export const Table = () => {
       <div className="flex items-center justify-between gap-8">
         <div>
           <h2 className="text-lg font-medium text-gray-800 dark:text-white">
-            Reciepients
+            recipients
           </h2>
           <p className="mt-1 text-sm text-gray-500 dark:text-gray-300">
-            This is a list of all reciepients. You can add new recipients, edit
+            This is a list of all recipients. You can add new recipients, edit
             or delete existing ones.
           </p>
         </div>
@@ -51,7 +51,7 @@ export const Table = () => {
                       scope="col"
                       className="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
                     >
-                      <span>Reciepient</span>
+                      <span>Recipient</span>
                     </th>
                     <th
                       scope="col"
