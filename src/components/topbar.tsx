@@ -38,7 +38,7 @@ export const Topbar = React.forwardRef<TopbarElement, Readonly<TopbarProps>>(
           </Heading>
         </div>
 
-        <div className={`${columnWidth}`}>
+        <div className="w-[400px]">
           <AnimateSharedLayout>
             {setViewMode && (
               <ToggleGroup.Root
@@ -97,6 +97,29 @@ export const Topbar = React.forwardRef<TopbarElement, Readonly<TopbarProps>>(
                       />
                     )}
                     Source
+                  </motion.div>
+                </ToggleGroup.Item>
+                <ToggleGroup.Item value="recipients">
+                  <motion.div
+                    className={classnames(
+                      'text-sm text-slate-11 font-medium px-3 py-2 transition ease-in-out duration-200 relative',
+                      {
+                        'text-slate-12': viewMode === 'recipients',
+                      },
+                    )}
+                    onHoverStart={() => setHovered('recipients')}
+                    onHoverEnd={() => setHovered('')}
+                  >
+                    {hovered === 'recipients' && (
+                      <motion.span
+                        layoutId="nav"
+                        className="absolute left-0 right-0 top-0 bottom-0 bg-slate-4"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                      />
+                    )}
+                    Recipients
                   </motion.div>
                 </ToggleGroup.Item>
               </ToggleGroup.Root>

@@ -200,3 +200,4 @@ const footer = {
   fontSize: "12px",
   lineHeight: "24px",
 };
+  
