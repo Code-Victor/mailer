@@ -1,12 +1,13 @@
-import * as React from 'react';
-import { promises as fs } from 'fs';
-import path from 'path';
-import { render } from '@react-email/render';
-import { GetStaticPaths } from 'next';
-import { Layout } from '../../components/layout';
-import { CodeContainer } from '../../components/code-container';
-import Head from 'next/head';
-import { useRouter } from 'next/router';
+import * as React from "react";
+import { promises as fs } from "fs";
+import path from "path";
+import { render } from "@react-email/render";
+import { GetStaticPaths } from "next";
+import { Layout } from "../../components/layout";
+import { CodeContainer } from "../../components/code-container";
+import Head from "next/head";
+import { useRouter } from "next/router";
+import { Table } from "../../components/Table";
 
 interface PreviewProps {
   navItems: string;
@@ -15,14 +16,14 @@ interface PreviewProps {
   slug: string;
 }
 
-export const CONTENT_DIR = 'emails';
+export const CONTENT_DIR = "emails";
 
 const getEmails = async () => {
   const emailsDirectory = path.join(process.cwd(), CONTENT_DIR);
   const filenames = await fs.readdir(emailsDirectory);
   const emails = filenames
-    .map((file) => file.replace(/\.(jsx|tsx)$/g, ''))
-    .filter((file) => file !== 'components');
+    .map((file) => file.replace(/\.(jsx|tsx)$/g, ""))
+    .filter((file) => file !== "components");
   return { emails, filenames };
 };
 
@@ -38,7 +39,7 @@ export async function getStaticProps({ params }) {
   try {
     const { emails, filenames } = await getEmails();
     const template = filenames.filter((email) => {
-      const [fileName] = email.split('.');
+      const [fileName] = email.split(".");
       return params.slug === fileName;
     });
 
@@ -47,7 +48,7 @@ export async function getStaticProps({ params }) {
     const plainText = render(<Email />, { plainText: true });
     const path = `${process.cwd()}/${CONTENT_DIR}/${template[0]}`;
     const reactMarkup = await fs.readFile(path, {
-      encoding: 'utf-8',
+      encoding: "utf-8",
     });
 
     return emails
@@ -76,7 +77,7 @@ const Preview: React.FC<Readonly<PreviewProps>> = ({
 }: any) => {
   const title = `${slug} — React Email`;
   const router = useRouter();
-  const [viewMode, setViewMode] = React.useState('desktop');
+  const [viewMode, setViewMode] = React.useState("desktop");
 
   const handleViewMode = (mode: string) => {
     setViewMode(mode);
@@ -91,7 +92,11 @@ const Preview: React.FC<Readonly<PreviewProps>> = ({
   };
 
   React.useEffect(() => {
-    if (router.query.view === 'source' || router.query.view === 'desktop') {
+    if (
+      router.query.view === "source" ||
+      router.query.view === "desktop" ||
+      router.query.view === "recipients"
+    ) {
       setViewMode(router.query.view);
     }
   }, [router.query.view]);
@@ -107,17 +112,23 @@ const Preview: React.FC<Readonly<PreviewProps>> = ({
       <Head>
         <title>{title}</title>
       </Head>
-      {viewMode === 'desktop' ? (
+      {viewMode === "desktop" && (
         <iframe srcDoc={markup} className="w-full h-[calc(100vh_-_70px)]" />
-      ) : (
+      )}
+      {viewMode === "source" && (
         <div className="flex gap-6 mx-auto p-6 max-w-3xl">
           <CodeContainer
             markups={[
-              { language: 'jsx', content: reactMarkup },
-              { language: 'markup', content: markup },
-              { language: 'markdown', content: plainText },
+              { language: "jsx", content: reactMarkup },
+              { language: "markup", content: markup },
+              { language: "markdown", content: plainText },
             ]}
           />
+        </div>
+      )}
+      {viewMode === "recipients" && (
+        <div className="flex gap-6 mx-auto p-6 max-w-3xl">
+          <Table/>
         </div>
       )}
     </Layout>
