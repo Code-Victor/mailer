@@ -32,13 +32,14 @@ export default function Email() {
           style={{
             paddingLeft: 10,
             paddingRight: 10,
+            paddingTop:10,
           }}
         >
           <Img
             src={`${baseUrl}/static/otc-logo.png`}
             width="150"
             height="144"
-            alt="Koala"
+            alt="OTC logo"
             style={logo}
           />
           <Section
