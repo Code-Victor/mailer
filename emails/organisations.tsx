@@ -133,7 +133,7 @@ export default function Email() {
             </Text>
             <Img
               src={`${baseUrl}/static/flier.png`}
-              alt="Vercel"
+              alt="Abeokuta Tech Hangout 4.0 flier"
               style={{
                 width: "100%",
                 height: "auto",
@@ -157,7 +157,7 @@ export default function Email() {
               >
                 <Img
                   src={`${baseUrl}/static/logo-instagram.png`}
-                  alt="Vercel"
+                  alt="instagram"
                   style={{
                     width: "100%",
                     height: "auto",
@@ -170,7 +170,7 @@ export default function Email() {
               >
                 <Img
                   src={`${baseUrl}/static/linkedin-logo.png`}
-                  alt="Vercel"
+                  alt="linkedin"
                   style={{
                     width: "100%",
                     height: "auto",
@@ -183,7 +183,7 @@ export default function Email() {
               >
                 <Img
                   src={`${baseUrl}/static/twitter-logo.png`}
-                  alt="Vercel"
+                  alt="twitter"
                   style={{
                     width: "100%",
                     height: "auto",
@@ -193,7 +193,7 @@ export default function Email() {
               <Button href="https://www.facebook.com/techogun" style={{}}>
                 <Img
                   src={`${baseUrl}/static/facebook-logo.png`}
-                  alt="Vercel"
+                  alt="facebook"
                   style={{
                     width: "100%",
                     height: "auto",
