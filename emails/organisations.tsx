@@ -50,6 +50,7 @@ export default function Email() {
           ></Section>
           <Section
             style={{
+              backgroundColor: "#056302",
               background: "linear-gradient(180deg, #056302 0%, #06B102 100%)",
               borderRadius: "14.0774px 14.0774px 0px 0px",
               padding: "20px 20px 20px 20px",
